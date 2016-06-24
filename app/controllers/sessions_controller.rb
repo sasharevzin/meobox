@@ -17,7 +17,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
     session[:user_id] = nil
-    redirect_to sign_in_path
+    redirect_to root_url, alert: "Account successfully deleted!"
   end
 end
