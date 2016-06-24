@@ -2,3 +2,28 @@
   <h1>Welcome to Meowbox</h1>
   <h3>A membership site for toys and treats for their favorite feline!</h3>
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="well">
+      <h2 class="text-center">Basic Membership</h2>
+      <h4>Sign up for $10 a month</h4>
+      <br/>
+      <%= link_to "Sign up with Basic", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+      <h2 class="text-center">Silver Membership</h2>
+      <h4>Sign up for the silver account for $30/month</h4>
+      <%= link_to "Sign up with Silver", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+      <h2 class="text-center">Gold Membership</h2>
+      <h4>Sign up for the gold account for $100/month</h4>
+      <%= link_to "Sign up with Gold", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+    </div>
+  </div>
+</div>
