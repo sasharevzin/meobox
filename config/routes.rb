@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   
+  resources :plans
   root 'pages#home'
   get '/about' => 'pages#about'
 
   resources :users do
     resources :registrations
   end
+
+  resources :plans
 
   get "/sign_in" => "sessions#new", as: :sign_in
   post "/sign_in" => "sessions#create"
