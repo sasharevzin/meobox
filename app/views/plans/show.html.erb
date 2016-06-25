@@ -1,4 +1,18 @@
 <p id="notice"><%= notice %></p>
-
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
+<% end %>
 <%= link_to 'Back', plans_path %>
+
+Name: <%= @plan.name %> <br>
+Price: <%= @plan.price %> <br>
+Description<%= @plan.description%>
+
+<% if current_user.already_registered_for?(@plan) %>
+  <%= button_to 'Unsubscribe', user_registration_path(current_user), method: :delete, data: { confirm: 'Are you sure to Unsubscribe?' }%>
+<% else %>
+  <%= form_tag  user_registrations_path(current_user) do %>  
+    <%= hidden_field_tag :plan_name, @plan.name %>
+    <%= submit_tag "Subscribe To Plan" %>
+  <% end %>
+<% end %>

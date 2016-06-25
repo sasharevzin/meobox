@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= form_for :plan do |f| %>
+      Name: <%= f.text_field :name %><br />
+      Price : <%= f.text_field :price %><br />
+      Description : <%= f.text_area :description %> 
+      <%= f.submit %>
+    <% end %>
   </div>
 <% end %>

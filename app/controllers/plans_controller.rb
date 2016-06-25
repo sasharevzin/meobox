@@ -4,7 +4,11 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.json
   def index
-    @plans = Plan.all
+    if current_user.admin?
+      @plans = Plan.all
+    else
+      @plans = [current_user.plan]
+    end
   end
 
   # GET /plans/1

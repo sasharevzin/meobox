@@ -6,24 +6,24 @@
   <div class="row">
     <div class="col-md-4">
       <div class="well">
-        <h2 class="text-center">Basic Membership</h2>
-        <h4>Sign up for $10 a month</h4>
+        <h2 class="text-center"><%= @plan_1.name %></h2>
+        <h4>Sign up for $ <%= @plan_1.price %> a month</h4>
         <br/>
-        <%= link_to "Sign up with Basic", new_user_registration_path(current_user), class: 'btn btn-primary btn-lg btn-block' %>
+        <%= link_to "Sign up with Basic", plan_path(@plan_1), class: 'btn btn-primary btn-lg btn-block' %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="well">
-        <h2 class="text-center">Silver Membership</h2>
-        <h4>Sign up for the silver account for $30/month</h4>
-        <%= link_to "Sign up with Silver", new_user_registration_path(current_user), class: 'btn btn-success btn-lg btn-block' %>
+        <h2 class="text-center"><%= @plan_2.name %></h2>
+        <h4>Sign up for the silver account for $ <%= @plan_2.price %> a month</h4>
+        <%= link_to "Sign up with Silver", plan_path(@plan_2), class: 'btn btn-success btn-lg btn-block' %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="well">
-        <h2 class="text-center">Gold Membership</h2>
-        <h4>Sign up for the gold account for $100/month</h4>
-        <%= link_to "Sign up with Gold", new_user_registration_path(current_user), class: 'btn btn-success btn-lg btn-block' %>
+        <h2 class="text-center"><%= @plan_2.name %></h2>
+        <h4>Sign up for the gold account for $ <%= @plan_2.price %> a month</h4>
+        <%= link_to "Sign up with Gold", plan_path(@plan_3), class: 'btn btn-success btn-lg btn-block' %>
       </div>
     </div>    
   <% end %>
