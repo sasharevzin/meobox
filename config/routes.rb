@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/about' => 'pages#about'
 
-  resources :users
+  resources :users do
+    resources :registrations
+  end
 
   get "/sign_in" => "sessions#new", as: :sign_in
   post "/sign_in" => "sessions#create"
