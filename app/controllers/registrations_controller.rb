@@ -13,11 +13,11 @@ class RegistrationsController < ApplicationController
     redirect_to @plan
   end
 
-  def destroy
+  def unsubscribe
     @plan = Plan.find_by_name(params[:plan_name])
     @user = User.find(params[:user_id])
-    Registration.where(user_id: @user.id, plan_id: @plan.id).destroy
-    flash[:notice] = "You are  unsubscribed to #{@plan.name}!"
+    # flash[:notice] = "You are  unsubscribed to #{@plan.name}!"
+    Registration.where(user_id: @user.id, plan_id: @plan.id).destroy_all
     redirect_to :root
   end
 end

@@ -9,7 +9,7 @@ Price: <%= @plan.price %> <br>
 Description<%= @plan.description%>
 
 <% if current_user.already_registered_for?(@plan) %>
-  <%= button_to 'Unsubscribe', user_registration_path(current_user), method: :delete, data: { confirm: 'Are you sure to Unsubscribe?' }%>
+  <%= button_to 'Unsubscribe', user_unsubscribe_path(current_user, plan_name: @plan.name), method: :delete, data: { confirm: 'Are you sure to Unsubscribe?' }%>
 <% else %>
   <%= form_tag  user_registrations_path(current_user) do %>  
     <%= hidden_field_tag :plan_name, @plan.name %>

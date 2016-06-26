@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :registrations
+    delete 'unsubscribe' => 'registrations#unsubscribe'
   end
 
   resources :plans
