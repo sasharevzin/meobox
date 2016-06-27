@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626163249) do
+ActiveRecord::Schema.define(version: 20160627221916) do
 
   create_table "boxes", force: :cascade do |t|
-    t.string   "subscription"
-    t.integer  "date"
     t.string   "title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "month"
+    t.integer  "plan_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20160626163249) do
     t.string   "url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "price"
+    t.integer  "box_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160626163249) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "expired_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,9 +54,13 @@ ActiveRecord::Schema.define(version: 20160626163249) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.boolean  "admin"
+    t.string   "provider"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.integer  "uid"
   end
 
 end

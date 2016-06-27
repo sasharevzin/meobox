@@ -24,9 +24,9 @@
         <td><%= item.image %></td>
         <td><%= item.size %></td>
         <td><%= item.url %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', plan_box_item_path(@plan, @box, item) %></td>
+        <td><%= link_to 'Edit', edit_plan_box_item_path(@plan, @box, item) %></td>
+        <td><%= link_to 'Destroy', plan_box_item_path(@plan, @box, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Item', new_plan_box_item_path(@plan, @box) %>

@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   get 'items/show'
 
-  resources :plans
+  resources :plans do
+    resources :boxes do
+      resources :items
+    end
+  end
+
   root 'pages#home'
   get '/about' => 'pages#about'
 
@@ -15,7 +20,6 @@ Rails.application.routes.draw do
     delete 'unsubscribe' => 'registrations#unsubscribe'
   end
 
-  resources :plans
 
   get "/sign_in" => "sessions#new", as: :sign_in
   post "/sign_in" => "sessions#create"

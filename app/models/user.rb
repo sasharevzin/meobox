@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates_presence_of :first_name, :last_name, :email, :password_digest
+  validates_presence_of :first_name, :email
 
   def already_registered_for?(plan)
     Registration.where(user_id: self.id, plan_id: plan.id).present?
@@ -18,11 +18,25 @@ class User < ActiveRecord::Base
     find_by(provider: auth['provider'], uid: auth['uid']) || create_user_from_omniauth(auth)
   end
 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+    user.provider = auth.provider
+    user.uid = auth.uid
+    user.first_name = auth.info.name
+    user.email = auth.info.email
+    user.password = SecureRandom.hex(10)
+    user.oauth_token = auth.credentials.token
+    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user.save!
+  end
+end
+
   def self.create_user_from_omniauth(auth)
+    puts " ! ! ! ! auth: #{auth.inspect}"
     create(
       provider: auth['provider'],
       uid: auth['uid'],
-      name: auth['info']['name']
+      first_name: auth['info']['name']
     )
   end
 end

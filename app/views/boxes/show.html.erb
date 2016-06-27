@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @box.month %>
+</p>
+
+<p>
+  <strong>Plan Name:</strong>
+  <%= @box.plan.name %>
+</p>
+
+
+
+<td><%= link_to 'Edit', edit_plan_box_path(@plan, @box) %></td> |
+<%= link_to 'Back', plan_boxes_path(@plan) %> |
+<%= link_to 'New', new_plan_box_item_path(@plan, @box) %>

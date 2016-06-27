@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% if current_user.admin? %>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'View Boxes', plan_boxes_path(@plan) %>
 <% end %>
 <%= link_to 'Back', plans_path %>
 
