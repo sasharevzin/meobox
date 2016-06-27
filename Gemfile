@@ -10,6 +10,8 @@ gem 'font-awesome-sass'
 
 gem 'autoprefixer-rails'
 
+gem 'omniauth-facebook'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
