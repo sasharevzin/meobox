@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625170947) do
+ActiveRecord::Schema.define(version: 20160626163249) do
+
+  create_table "boxes", force: :cascade do |t|
+    t.string   "subscription"
+    t.integer  "date"
+    t.string   "title"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "image"
+    t.string   "size"
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"

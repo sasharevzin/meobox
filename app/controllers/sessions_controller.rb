@@ -25,8 +25,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    # @user = User.find(params[:id])
+    # @user.destroy
     session[:user_id] = nil
     session[:omniauth] = nil
     redirect_to root_url, alert: "Account successfully deleted!"

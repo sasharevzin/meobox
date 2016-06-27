@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-   
+  before_action :set_auth
 
   def home
     @plan_1 = Plan.find_by_name('Basic Membership')
@@ -9,5 +9,9 @@ class PagesController < ApplicationController
 
   def about 
 
+  end
+
+  def set_auth
+    @auth = session[:omniauth] if session[:omniauth]
   end
 end
