@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   post "/sign_up" => "users#create"
 
   get 'auth/:provider/callback', to: 'sessions#facebook'
+  # match 'auth/:provider/callback', to: 'sessions#facebook', via: [:get, :post]
+  # match 'auth/failure', to: redirect('/'), via: [:get, :post]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

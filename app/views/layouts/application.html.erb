@@ -26,7 +26,8 @@
             Signed in as <%= current_user.email %> | <%= button_to "Log out", sign_out_path, method: :delete, class: 'btn btn-primary navbar-btn' %>
           <% else %>
             <%= link_to "Log in", sign_in_path, class: 'btn btn-primary navbar-btn', method: :get %> | <%= link_to "Sign up", sign_up_path, class: 'btn btn-success navbar-btn', method: :get %>
-            <%= link_to "auth/facebook" do %><%= image_tag('facebook.png', width: '40', heigth: '40', class: 'img-circle') %><% end %>
+            <%= link_to "/auth/facebook" do %><%= image_tag('facebook.png', width: '40', heigth: '40', class: 'img-circle') %>
+            <% end %>
           <% end %>
           <li><%= link_to "About", about_path %></li>
         </ul>
