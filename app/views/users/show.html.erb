@@ -1,8 +1,16 @@
 <article>
-  <header>
-    <h1><%= @user.first_name %></h1>
-    <h2><%= @user.email%></h2>
-  </header>
+
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <h1>
+          <%= @user.first_name %>
+          <%= @user.email%>
+          <%= @user.plan.name %>
+        </h1>
+      </section>
+    </aside>
+  </div>
 
   <footer>
     <nav>

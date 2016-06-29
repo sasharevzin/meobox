@@ -26,7 +26,16 @@ class BoxesController < ApplicationController
   end
 
   def update
+    if @plan.boxes.create(box_params)
+      redirect_to plan_boxes_path(@plan), notice: 'successfully updated '
+    else
+      render 'edit'
+    end
+  end
 
+  def destroy
+    @plan.boxes.destroy
+    redirect_to plan_boxes_path(@plan), notice: 'successfully destroyed'
   end
 
   private
