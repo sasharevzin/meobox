@@ -10,7 +10,11 @@
           <% @user.plan.boxes.each do |box| %>            
             Box Title: <%= box.theme_title %>  
               <% box.items.each do |item| %> 
-                item title: <%= item.title %>             
+                Item Title: <%= item.title %> 
+                Item Description: <%= item.description %> 
+                Item Price: <%= item.price %>  
+                Item Size: <%= item.size %> 
+                Item URL: <%= item.url %>        
               <% end %>          
             <% end %>
 
@@ -26,7 +30,8 @@
         <%= link_to "Delete Account", @user, 
                     method: :delete, 
                     data: { confirm: "Are you sure?" }, 
-                    class: "button" %> 
+                    class: "button" %>
+
       <% end %>
     </nav>
   </footer>
