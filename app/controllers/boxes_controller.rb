@@ -36,6 +36,6 @@ class BoxesController < ApplicationController
   end
 
   def box_params
-    params.require(:box).permit(:month, :plan_id)
+    params.require(:box).permit(:starts_at, :theme_title, :subscription, :plan_id)
   end
 end
