@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     # the password_digest stored in the database
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to(session[:intended_url] || @user)
+      session[:intended_url] = nil 
     else
       render :new
     end
