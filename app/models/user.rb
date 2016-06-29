@@ -6,6 +6,13 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :email
 
+  after_create :create_plan
+
+  # making sure not to override subscription
+  def create_plan
+    Plan.create(user_id: self.id) if plan.nil?
+  end
+
   def already_registered_for?(plan)
     Registration.where(user_id: self.id, plan_id: plan.id).present?
   end
