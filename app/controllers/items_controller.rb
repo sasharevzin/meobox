@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_box
   before_action :set_plan
+  before_action :require_admin, except: [:index, :show]
   
   def index
     @items = @box.items    

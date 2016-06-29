@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
+  has_secure_password
+
   has_one :registration
   has_one :plan, through: :registration
-
-  has_secure_password
 
   validates_presence_of :first_name, :email
 
@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   # making sure not to override subscription
   def create_plan
     Plan.create(user_id: self.id) if plan.nil?
+  end
+
+  def self.authenticate(email, password)
+    user = User.find_by(email: email)
+    user && user.authenticate(password)
   end
 
   def already_registered_for?(plan)

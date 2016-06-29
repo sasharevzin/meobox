@@ -1,6 +1,7 @@
 class BoxesController < ApplicationController
   before_action :set_plan
   before_action :set_box, except: [:index, :new, :create]
+  before_action :require_admin, except: [:index, :show]
   
   def index
     @boxes = @plan.boxes
