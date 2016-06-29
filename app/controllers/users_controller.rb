@@ -40,12 +40,17 @@ class UsersController < ApplicationController
     redirect_to root_url, alert: "Account successfully deleted!"
   end
 
+  def history
+    @shipped_boxes = current_user.plan.boxes.where(shipped: true)
+  end
+
   private
 
   def require_correct_user
     @user = User.find(params[:id])
     unless current_user == @user
-      redirect_to root_url
+      redirect_to root_urlputs "PARAMS: #{params.inspect}"
+    item_attrs = params[:box][:item_attribuets].values.map { |attr| attr }   
     end
   end
 

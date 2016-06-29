@@ -23,6 +23,20 @@
     <%= f.label :starts_at %><br>
     <%= f.datetime_select :starts_at, class: "form-control" %>
   </div>
+
+  <h2> Items for the box </h2>
+  <div class="form-group">
+     <% 3.times.each do |key| %>
+        <h3> Item <%= key %> </h3>
+        <%= label_tag 'title' %>
+        <%= text_field_tag "box[item_attributes][#{key}][title]" %>
+        <%= label_tag 'size' %>
+        <%= text_field_tag "box[item_attributes][#{key}][size]" %>
+        <%= label_tag 'description' %>
+        <%= text_field_tag "box[item_attributes][#{key}][description]" %>
+        <br>
+      <% end %>         
+  </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>

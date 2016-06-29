@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   get 'items/new'
   get 'items/show'
 
+  get 'history' => 'users#history'
+
   resources :plans do
     resources :boxes do
       resources :items
+      put 'ship' => 'boxes#ship'
     end
   end
 

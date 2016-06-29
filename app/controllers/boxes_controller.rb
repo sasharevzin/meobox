@@ -1,6 +1,6 @@
 class BoxesController < ApplicationController
   before_action :set_plan
-  before_action :set_box, except: [:index, :new, :create]
+  before_action :set_box, except: [:index, :new, :create, :ship]
   before_action :require_admin, except: [:index, :show]
   
   def index
@@ -11,12 +11,23 @@ class BoxesController < ApplicationController
     @box = Box.new
   end
 
-  def create
-    if @plan.boxes.create(box_params)
+  def create        
+    if box = @plan.boxes.create(box_params)
+      # puts "PARAMS: #{params.inspect}"
+      item_attrs = params[:box][:item_attributes].values # array of items attributes
+      # puts "item_attrs: #{item_attrs.inspect}"
+      # using custom attribuet writer to create items for the box
+      box.item_attributes = item_attrs
       redirect_to plan_boxes_path(@plan), notice: 'successfully created '
     else
       render 'new'
     end
+  end
+
+  def ship
+    @box = Box.find(params[:box_id])
+    @box.update_attributes(shipped: true)
+    redirect_to :back, notice: 'successfully shipped!'
   end
 
   def show
