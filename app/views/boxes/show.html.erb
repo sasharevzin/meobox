@@ -1,17 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Month:</strong>
-  <%= @box.month %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <h1><strong>Plan Name:</strong></h1>
+      <%= @box.plan.name %>
+    </p>
+    <p>
+      <strong>Theme Title</strong>
+      <h3><%= @box.theme_title %></h3>
+    </p>
+    <p>
+      <strong>Starts At:</strong>
+      <p><%= @box.starts_at %></p>
+    </p>
+  </div>
+</div>
 
-<p>
-  <strong>Plan Name:</strong>
-  <%= @box.plan.name %>
-</p>
+
 
 
 
 <td><%= link_to 'Edit', edit_plan_box_path(@plan, @box) %></td> |
 <%= link_to 'Back', plan_boxes_path(@plan) %> |
 <%= link_to 'New', new_plan_box_item_path(@plan, @box) %>
+
+
