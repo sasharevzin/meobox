@@ -12,6 +12,9 @@ gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
 
+gem 'simple_form'
+
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
