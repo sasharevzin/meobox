@@ -3,22 +3,22 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
-        <h1>
-          <%= @user.first_name %>
-          <%= @user.email%>
-          <%= @user.plan.name %>
-          <% @user.plan.boxes.each do |box| %>            
-            Box Title: <%= box.theme_title %>  
-              <% box.items.each do |item| %> 
-                Item Title: <%= item.title %> 
-                Item Description: <%= item.description %> 
-                Item Price: <%= item.price %>  
-                Item Size: <%= item.size %> 
-                Item URL: <%= item.url %>        
-              <% end %>          
+          <h1><%= @user.first_name %></h1>
+          <h2><%= @user.email%></h2>
+          <h3><%= @user.plan.name %></h3>
+          <ul>
+            <% @user.plan.boxes.each do |box| %>            
+              <li>Box Title: <%= box.theme_title %> </li> 
+                <ul><% box.items.each do |item| %> 
+                  <li>Item Title: <%= item.title %> </li>
+                  <li>Item Description: <%= item.description %> </li>
+                  <li>Item Price: <%= item.price %></li>
+                  <li>Item Size: <%= item.size %> </li>
+                  <li>Item URL: <%= item.url %></li>        
+              <% end %>
+              </ul>          
             <% end %>
-
-        </h1>
+          </ul>
       </section>
     </aside>
   </div>
