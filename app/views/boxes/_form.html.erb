@@ -1,15 +1,5 @@
 <%= form_for([@plan, @box]) do |f| %>
-  <% if @box.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@box.errors.count, "error") %> prohibited this box from being saved:</h2>
-
-      <ul>
-      <% @box.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/errors", object: @box %>
  
   <div class="form-group">
     <%= f.label :theme_title %><br>

@@ -33,6 +33,9 @@
                     class: "button" %>
 
       <% end %>
+      <% if current_user_admin? %>
+        <%= link_to 'New Box', new_plan_box_path(@plan), class: "btn btn-link" %>
+      <% end %>
     </nav>
   </footer>
 </article>

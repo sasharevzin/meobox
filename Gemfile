@@ -10,9 +10,13 @@ gem 'font-awesome-sass'
 
 gem 'autoprefixer-rails'
 
+gem 'omniauth'
+
 gem 'omniauth-facebook'
 
 gem 'simple_form'
+
+gem 'pry'
 
 
 # Use sqlite3 as the database for Active Record

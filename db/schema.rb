@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20160629223936) do
 
   create_table "boxes", force: :cascade do |t|
+    t.string   "subscription"
     t.string   "title"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.string   "subscription"
     t.string   "theme_title"
     t.datetime "starts_at"
     t.integer  "plan_id"
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20160629223936) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password_digest"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.boolean  "admin"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "admin",            default: false
     t.string   "provider"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"

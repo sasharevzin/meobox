@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_signin, except: [:new, :create]
   before_action :require_correct_user, only: [:edit, :update, :destroy]
+  before_action :set_plan
 
   def new
     @user = User.new
@@ -46,10 +47,14 @@ class UsersController < ApplicationController
 
   private
 
+  def set_plan    
+    @plan = current_user.plan
+  end
+
   def require_correct_user
     @user = User.find(params[:id])
     unless current_user == @user
-      redirect_to root_urlputs "PARAMS: #{params.inspect}"
+      redirect_to root_url puts "PARAMS: #{params.inspect}"
     item_attrs = params[:box][:item_attribuets].values.map { |attr| attr }   
     end
   end
