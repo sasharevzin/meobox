@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  get 'items/index'
-  get 'items/new'
-  get 'items/show'
-
-  get 'history' => 'users#history'
+  # get 'items/index'
+  # get 'items/new'
+  # get 'items/show'
+  resources :items
+  # get 'history' => 'users#history'
 
   resources :plans do
     resources :boxes do
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :registrations
+    get 'history' => 'users#history'
     delete 'unsubscribe' => 'registrations#unsubscribe'
   end
 

@@ -1,5 +1,6 @@
 class BoxesController < ApplicationController
   before_action :set_plan
+  # before_action :set_item, only: [:show]
   before_action :set_box, except: [:index, :new, :create, :ship]
   before_action :require_admin, except: [:index, :show]
   
@@ -7,17 +8,20 @@ class BoxesController < ApplicationController
     @boxes = @plan.boxes
   end
 
-  def new
-    @box = Box.new
+  def new    
+    @box = @plan.boxes.new
   end
 
-  def create        
-    if box = @plan.boxes.create(box_params)
+  def create  
+    @box = @plan.boxes.new(box_params)  
+    puts "inside create box: #{@box.inspect}" 
+    if @box.save            
       # puts "PARAMS: #{params.inspect}"
-      item_attrs = params[:box][:item_attributes].values # array of items attributes
+      # array of items attributes
+      item_attrs = params[:box][:item_attributes].values 
       # puts "item_attrs: #{item_attrs.inspect}"
       # using custom attribuet writer to create items for the box
-      box.item_attributes = item_attrs
+      @box.item_attributes = item_attrs
       redirect_to plan_boxes_path(@plan), notice: 'successfully created '
     else
       render 'new'
@@ -51,6 +55,10 @@ class BoxesController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def set_plan
     @plan = Plan.find(params[:plan_id])
   end
@@ -60,6 +68,6 @@ class BoxesController < ApplicationController
   end
 
   def box_params
-    params.require(:box).permit(:starts_at, :theme_title, :subscription, :plan_id)
+    params.require(:box).permit(:starts_at, :theme_title, :plan_id)
   end
 end

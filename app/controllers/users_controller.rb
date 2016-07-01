@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_signin, except: [:new, :create]
   before_action :require_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_plan
+  before_action :set_plan, only: [:show, :history]
 
   def new
     @user = User.new
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def history
-    @shipped_boxes = current_user.plan.boxes.where(shipped: true)
+    @shipped_boxes = @plan.boxes.where(shipped: true)
   end
 
   private

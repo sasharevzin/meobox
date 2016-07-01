@@ -1,16 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_box
-  before_action :set_plan
+  before_action :set_box, except: [:new, :index, :show]  
   before_action :require_admin, except: [:index, :show]
   
   def index
-    @items = @box.items    
+    @items = Item.all
   end
 
   def create
     if @box.items.create(item_params)
-      redirect_to plan_box_items_path(@plan, @box), notice: 'successfully created '
+      redirect_to items_path, notice: 'successfully created '
     else
       render 'new'
     end
@@ -33,15 +32,13 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-   def set_box
-    @box = Box.find(params[:box_id])
-  end
-
-   def set_plan
-    @plan = Plan.find(params[:plan_id])
+  def set_box
+    puts "params: #{params.inspect}"
+    puts "params: #{params[:item].inspect}"
+    @box = Box.find(params[:item][:box_id])
   end
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :image, :size, :url)
+    params.require(:item).permit(:title, :description, :price, :image, :size, :url, :box_id)
   end
 end

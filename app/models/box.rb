@@ -1,4 +1,6 @@
 class Box < ActiveRecord::Base
+  validates :theme_title, :plan_id, presence: true
+ 
   has_many :items
   belongs_to :plan
 

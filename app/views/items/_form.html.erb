@@ -35,6 +35,9 @@
     <%= f.label :url %><br>
     <%= f.text_field :url, class: "form-control" %>
   </div>
+  <h3>Select A Box</h3>
+  <%= f.collection_select :box_id, Box.all, :id, :theme_title %>
+
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
