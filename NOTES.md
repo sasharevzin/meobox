@@ -1,3 +1,6 @@
+facebook
+forgot pass
+
 - As a visitor I want to see a list of subscriptions so I can decide how much to spend a month (three subscription levels hard coded - $10/mo, $30/mo and $100/mo)
 - As a visitor I want to be able to learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription)
 - As a visitor I want to be able to purchase a subscription so I can start treating my cat (don’t worry about processing payments - just ask for first name, last name and email and we’ll ignore the credit card processing piece)

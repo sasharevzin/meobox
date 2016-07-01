@@ -1,6 +1,5 @@
 class BoxesController < ApplicationController
   before_action :set_plan
-  # before_action :set_item, only: [:show]
   before_action :set_box, except: [:index, :new, :create, :ship]
   before_action :require_admin, except: [:index, :show]
   
