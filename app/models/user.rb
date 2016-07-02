@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :email
 
+  after_create :create_plan
+  # when user created plan must be created
+  # do not override a plan
+  def create_plan
+    Plan.create(user_id: id) if plan.nil?
+  end
 
   def self.authenticate(email, password)
     user = User.find_by(email: email)

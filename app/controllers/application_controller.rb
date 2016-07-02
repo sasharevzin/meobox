@@ -40,5 +40,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, alert: "Unauthorized access!"
     end
   end
+
+  def subscribed?
+    plan = Plan.find(params[:id])
+    !!current_user.plan
+  end
+
+  helper_method :subscribed?
  
 end
