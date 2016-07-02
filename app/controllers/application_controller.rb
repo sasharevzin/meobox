@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  include CanCan::ControllerAdditions
+
 # create an instance variable that if a session variable "user_id"  exists, 
 # will return the correspond user and assign it to the that variable.
   private
@@ -41,10 +43,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def subscribed?
-    plan = Plan.find(params[:id])
-    !!current_user.plan
-  end
+  # def subscribed?
+  #   plan = Plan.find(params[:id])
+  #   !!current_user.plan.active
+  #   flash[:alert] = "You must be subscribed to access this content"
+  # end
 
   helper_method :subscribed?
  

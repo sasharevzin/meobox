@@ -18,6 +18,8 @@ gem 'simple_form'
 
 gem 'pry'
 
+gem 'cancancan'
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
