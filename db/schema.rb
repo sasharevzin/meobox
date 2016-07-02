@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629223936) do
+ActiveRecord::Schema.define(version: 20160702184335) do
 
   create_table "boxes", force: :cascade do |t|
     t.string   "subscription"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160629223936) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.text     "uid"
+    t.string   "reset_digest"
   end
 
 end
