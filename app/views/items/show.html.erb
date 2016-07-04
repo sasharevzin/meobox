@@ -35,5 +35,9 @@
   <%= @item.url %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<% if current_user.admin? %>
+  <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-link" %>
+  <%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+<% end %>
 <%= link_to 'Back', item_path %>
+

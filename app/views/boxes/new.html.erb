@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
+<% if @plan.present? %>
 <%= link_to 'Back', plan_boxes_path(@plan) %>
+<% end %>

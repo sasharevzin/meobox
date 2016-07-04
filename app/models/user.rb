@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessor :activation_token, :reset_token
+  attr_accessor :reset_token
+  after_create :create_reset_digest
   has_secure_password
 
   has_one :registration
@@ -15,6 +16,19 @@ class User < ActiveRecord::Base
     Plan.create(user_id: id) if plan.nil?
   end
 
+    # Returns the hash digest of the given string.
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  # Returns a random token.
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+
    # Sends activation email.
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
@@ -22,6 +36,7 @@ class User < ActiveRecord::Base
 
   # Sets the password reset attributes.
   def create_reset_digest
+    puts "inside create reset digest"
     self.reset_token = User.new_token
     update_attribute(:reset_digest,  User.digest(reset_token))
     update_attribute(:reset_sent_at, Time.zone.now)
@@ -89,9 +104,8 @@ end
       self.email = email.downcase
     end
 
-    # Creates and assigns the activation token and digest.
-    def create_activation_digest
-      self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
-    end
+    # # Creates and assigns the activation token and digest.
+    # def create_activation_digest
+    #   self.activation_token  = User.new_token
+    # end
 end

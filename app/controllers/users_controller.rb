@@ -43,7 +43,11 @@ class UsersController < ApplicationController
   end
 
   def history
-    @shipped_boxes = @plan.boxes.where(shipped: true)
+    if current_user.admin?
+      @shipped_boxes = Box.where(shipped: true)
+    else
+      @shipped_boxes = @plan.boxes.where(shipped: true) if @plan
+    end    
   end
 
   private

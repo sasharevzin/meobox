@@ -1,7 +1,11 @@
   <h1>History of shipped boxes</h1>
 
-  <div class="row">       
+  <div class="row"> 
+  <% if @shipped_boxes.present? %>
       <% @shipped_boxes.each do |box| %>                         
-        <h3>Box Title: <%= box.theme_title %></h3>         
-      <% end %>          
+        <h3>Box Title: <%= box.theme_title %></h3> 
+      <% end %>
+  <% else %>
+    <h3> You have no shipped boxes!</h3> 
+  <% end %>         
   </div>

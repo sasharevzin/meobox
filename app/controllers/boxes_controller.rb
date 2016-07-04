@@ -1,17 +1,21 @@
 class BoxesController < ApplicationController
-  before_action :set_plan
+  before_action :set_plan 
   before_action :set_box, except: [:index, :new, :create, :ship]
   before_action :require_admin, except: [:index, :show]
   
   def index
-    @boxes = @plan.boxes
+    if @plan
+      @boxes = @plan.boxes
+    else
+      @boxes = Box.all
+    end
   end
 
-  def new    
-    @box = @plan.boxes.new
+  def new  
+    @box = Box.new
   end
 
-  def create  
+  def create 
     @box = @plan.boxes.new(box_params)  
     puts "inside create box: #{@box.inspect}" 
     if @box.save            
@@ -48,8 +52,8 @@ class BoxesController < ApplicationController
   end
 
   def destroy
-    @plan.boxes.destroy
-    redirect_to plan_boxes_path(@plan), notice: 'successfully destroyed'
+    @box.destroy
+    redirect_to boxes_path, notice: 'successfully destroyed'
   end
 
   private
@@ -58,8 +62,12 @@ class BoxesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def set_plan
-    @plan = Plan.find(params[:plan_id])
+  def set_plan    
+    if params[:plan_id].present?    
+      @plan = Plan.find(params[:plan_id])    
+    elsif params[:box] && params[:box][:plan_id]
+      @plan = Plan.find(params[:box][:plan_id])
+    end
   end
 
   def set_box

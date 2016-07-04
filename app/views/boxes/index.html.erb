@@ -11,17 +11,20 @@
             <p><%= box.starts_at %></p>
           </div>
           <div class="panel-footer">
-            <%= link_to 'Show', plan_box_path(@plan, box), class: "btn btn-link" %>
-            <%= link_to 'Edit', edit_plan_box_path(@plan, box), class: "btn btn-link" %>
-            <%= link_to 'Destroy', plan_box_path(@plan, box), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+            <% if @plan %>
+              <%= link_to 'Show', plan_box_path(@plan, box), class: "btn btn-link" %>
+              
+              <br>
+            <% else %>
+               <%= link_to 'Show', box_path(box), class: "btn btn-link" %>
+              
+               <br>
+             
+            <% end %>
           </div><!-- panel footer -->
+          
         </div><!-- thumbnail -->
       </div><!-- col-md-3 -->
     <% end %>
+     <%= link_to 'New Box', new_box_path, class: "btn btn-link" %>
   </div><!-- row -->
-
-<br>
-
-<%= link_to 'New Box', new_plan_box_path(@plan), class: "btn btn-link" %>
-
-

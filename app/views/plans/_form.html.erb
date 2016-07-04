@@ -11,12 +11,22 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form_for :plan do |f| %>
-      Name: <%= f.text_field :name %><br />
-      Price : <%= f.text_field :price %><br />
-      Description : <%= f.text_area :description %> 
-      <%= f.submit %>
+  <%= form_for :plan do |f| %>
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "form-control" %><br />
+    </div>
+    <div class="form-group">
+      <%= f.label :price %><br>
+      <%= f.text_field :price, class: "form-control" %><br />
+    </div>
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control" %>
+    </div> 
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
     <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>

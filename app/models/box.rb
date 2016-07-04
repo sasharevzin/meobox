@@ -1,5 +1,6 @@
 class Box < ActiveRecord::Base
   validates :theme_title, :plan_id, presence: true
+
  
   has_many :items
   belongs_to :plan
@@ -9,5 +10,9 @@ class Box < ActiveRecord::Base
     item_attributes.each do |attributes|
       items.find_or_create_by(attributes)
     end
+  end
+
+  def shipped?
+    shipped == true
   end
 end
