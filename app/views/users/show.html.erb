@@ -33,11 +33,11 @@
 
       <% end %>
       <% if current_user_admin? %>
-        
+        <% if !subscribed? %>
           <%= link_to 'New Item', new_item_path(@item), class: "btn btn-link" %>
-          
-     
-        <%= link_to 'New Box', new_plan_box_path(@plan), class: "btn btn-link" %>
+          <%= link_to 'New Box', new_box_path, class: "btn btn-link" %>
+        <% end %>
+        
       <% end %>
     </nav>
   </footer>

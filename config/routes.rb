@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
+  resources :boxes
   # get 'items/index'
   # get 'items/new'
   # get 'items/show'

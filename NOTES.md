@@ -1,8 +1,8 @@
 facebook
 forgot pass
-more validations
+more validations and error messages display
 ship only one time
-subscribe only one time
+subscribe only one time to one plan and ability for admin to make plans without being subscribed
 
 - As a visitor I want to see a list of subscriptions so I can decide how much to spend a month (three subscription levels hard coded - $10/mo, $30/mo and $100/mo)
 - As a visitor I want to be able to learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription)
