@@ -9,9 +9,9 @@ Subscription application with 3 kinds of monthly subscriptions, each one has cer
 To get this running locally on your computer:
 - Clone this repo locally git clone https://github.com/zivolution921/meobox
 - cd into the directory
-- Run bundle
-- Run rake db:migrate
-- Run the application using rails s
+- Run `bundle`
+- Run `rake db:migrate`
+- Run the application using `rails s`
 
 
 ##Contributing
