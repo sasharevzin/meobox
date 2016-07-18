@@ -1,8 +1,5 @@
-facebook
-forgot pass
-more validations and error messages display
-ship only one time
-subscribe only one time to one plan and ability for admin to make plans without being subscribed
+
+
 
 - As a visitor I want to see a list of subscriptions so I can decide how much to spend a month (three subscription levels hard coded - $10/mo, $30/mo and $100/mo)
 - As a visitor I want to be able to learn more about a particular description so I can decide whether or not it’s worth buying (detail page for subscription)
@@ -20,3 +17,19 @@ To meet the nested form and custom attribute writer you should be able to add up
 To meet the nested resource requirements /boxes/1/items should show all of the items in box #1 to anyone who wants to see it and boxes/1/items/new should allow an administrator to add a new item to a box.
 
 /items/new should also allow an admin to add a new item to a box, but they'll have to select from a drop down list of boxes
+
+
+ item_attributes = {"0"=>{"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"}, "1"=>{"title"=>"", "size"=>"", "description"=>""}, "2"=>{"title"=>"", "size"=>"", "description"=>""}}
+ => {"0"=>{"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"}, "1"=>{"title"=>"", "size"=>"", "description"=>""}, "2"=>{"title"=>"", "size"=>"", "description"=>""}} 
+2.3.0-preview1 :030 > item_attributes
+ => {"0"=>{"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"}, "1"=>{"title"=>"", "size"=>"", "description"=>""}, "2"=>{"title"=>"", "size"=>"", "description"=>""}} 
+2.3.0-preview1 :031 > item_attributes.values
+ => [{"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"}, {"title"=>"", "size"=>"", "description"=>""}, {"title"=>"", "size"=>"", "description"=>""}] 
+2.3.0-preview1 :032 > item_attributes.values
+ => [{"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"}, {"title"=>"", "size"=>"", "description"=>""}, {"title"=>"", "size"=>"", "description"=>""}] 
+2.3.0-preview1 :033 > item_attributes.values
+ => [{"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"}, {"title"=>"", "size"=>"", "description"=>""}, {"title"=>"", "size"=>"", "description"=>""}] 
+2.3.0-preview1 :034 > item_attributes.values.first
+ => {"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"} 
+2.3.0-preview1 :035 > ia = item_attributes.values.first
+ => {"title"=>"coolest box", "size"=>"100", "description"=>"best box ever"} 

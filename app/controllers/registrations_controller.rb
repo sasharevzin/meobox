@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
       flash[:notice] = "You are already subscribed to #{current_user.plan.name}! You have to unsubscribe that plan in order to subscribe a new plan"
     else
       flash[:notice] = "Successfully subscribed to #{@plan.name}!"
-      Registration.create(user_id: @user.id, plan_id: @plan.id, expired_at: DateTime.now + 1.month.from_now)      
+      Registration.create(user_id: @user.id, plan_id: @plan.id, expired_at: DateTime.now + 1.month)      
     end        
     redirect_to @plan
   end

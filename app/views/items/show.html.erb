@@ -16,11 +16,6 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
   <strong>Image:</strong>
   <%= @item.image %>
 </p>
@@ -38,6 +33,7 @@
 <% if current_user.admin? %>
   <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-link" %>
   <%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+  <%= link_to 'Box of Item', box_path(@item.box), class: "btn btn-link" %>
 <% end %>
 <%= link_to 'Back', item_path %>
 

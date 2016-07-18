@@ -5,7 +5,10 @@
 <ul>
   <% @users.each do |user| %>
     <li>
-      <%= link_to user.name, user %>
+      User First Name: <%= link_to user.first_name, user %> 
+      <% if user.plan.present? %>
+        Plan: <%= user.plan.name %>
+       <% end %>
     </li>
   <% end %>
 </ul>

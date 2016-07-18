@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   before_action :require_signin, except: [:new, :create]
   before_action :require_correct_user, only: [:edit, :update, :destroy]
   before_action :set_plan, only: [:show, :history]
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       redirect_to @user, notice: "Account successfully updated!"
+      # redirect_to "/users/#{@user.id}"
     end
   end
 
@@ -33,7 +35,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # authorize! :read, @plan
   end
 
   def destroy

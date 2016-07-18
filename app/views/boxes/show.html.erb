@@ -14,6 +14,12 @@
       <strong>Starts At:</strong>
       <p><%= @box.starts_at %></p>
     </p>
+    <% @box.items.each do |item| %>
+    <p>
+      <strong>item title:</strong>
+      <%= item.title %>
+    </p>
+    <% end %>
   </div>
 </div>
 

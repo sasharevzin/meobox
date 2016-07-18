@@ -14,7 +14,7 @@
     <% @plans.each do |plan| %> 
       <tr>
         <td><%= plan.name %></td>
-        <td><%= plan.price %></td>
+        <td><%= number_to_currency(plan.price) %></td>
         <td><%= plan.description %></td>
         <td><%= link_to 'Show', plan %></td>
         <% if current_user.admin? %>

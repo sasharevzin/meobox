@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
+ 
+ <%= form_tag items_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <%= link_to 'New Item', new_item_path, class: "btn btn-link" %>
 
 <h1>Items Listings</h1>
 
@@ -11,7 +18,7 @@
             <h3><%= item.title %></h3>
             <p><%= item.description %></p>
             <p><%= number_to_currency(item.price) %></p>
-            <p><%= item.size %></p>
+            <p><%= item.size %>lbs</p>
             <p><%= item.url %></p>
             <%= link_to 'Show', item_path(item), class: "btn btn-link" %>
           </div>
@@ -19,7 +26,8 @@
       </div>
     <% end %>
   </div>
-
 <br>
+ 
+<%= paginate @items %>
 
-<%= link_to 'New Item', new_item_path, class: "btn btn-link" %>
+

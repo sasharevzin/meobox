@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+ <%= form_tag boxes_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+<%= link_to 'All Boxes', boxes_path, class: "btn btn-link" %>
+<%= link_to 'New Box', new_box_path, class: "btn btn-link" %>
+
 <h1>Listing Boxes</h1>
   <div class="row">
     <% @boxes.each do |box| %>
@@ -26,5 +34,7 @@
         </div><!-- thumbnail -->
       </div><!-- col-md-3 -->
     <% end %>
-     <%= link_to 'New Box', new_box_path, class: "btn btn-link" %>
+     
   </div><!-- row -->
+
+  <%= paginate @boxes %>

@@ -5,10 +5,14 @@
     <%= f.label :theme_title %><br>
     <%= f.text_field :theme_title, class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :subscription %><br>
-    <%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
-  </div>
+
+  <% unless params[:plan_id].present? %>
+    <div class="form-group">
+      <%= f.label :subscription %><br>
+      <%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :starts_at %><br>
     <%= f.datetime_select :starts_at, class: "form-control" %>
@@ -16,16 +20,28 @@
 
   <h2> Items for the box </h2>
   <div class="form-group">
-     <% 3.times.each do |key| %>
-        <h3> Item <%= key %> </h3>
-        <%= label_tag 'title' %>
-        <%= text_field_tag "box[item_attributes][#{key}][title]" %>
-        <%= label_tag 'size' %>
-        <%= text_field_tag "box[item_attributes][#{key}][size]" %>
-        <%= label_tag 'description' %>
-        <%= text_field_tag "box[item_attributes][#{key}][description]" %>
-        <br>
-      <% end %>         
+      <% if controller.action_name == 'edit' %>
+        <% @box.items.each_with_index do |item, key| %>
+          <h3> Item <%= key %> </h3>
+          <%= label_tag 'title' %>
+          <%= text_field_tag "box[item_attributes][#{key}][title]", item.title %>
+          <%= label_tag 'size' %>
+          <%= text_field_tag "box[item_attributes][#{key}][size]", item.size %>
+          <%= label_tag 'description' %>
+          <%= text_field_tag "box[item_attributes][#{key}][description]", item.description %>
+        <% end %>
+        <% else %>
+          <% 3.times.each do |key| %>
+          <h3> Item <%= key + 1 %> </h3>
+          <%= label_tag 'title' %>
+          <%= text_field_tag "box[item_attributes][#{key}][title]" %>
+          <%= label_tag 'size' %>
+          <%= text_field_tag "box[item_attributes][#{key}][size]" %>
+          <%= label_tag 'description' %>
+          <%= text_field_tag "box[item_attributes][#{key}][description]" %>
+          <br>
+        <% end %> 
+      <% end %> 
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>

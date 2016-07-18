@@ -1,4 +1,15 @@
 class Item < ActiveRecord::Base
   belongs_to :box
-  validates :title, :description, :price, presence: true
+  validates :title, :description, :size, presence: true
+  validates :description, length: { minimum: 5 }
+
+  paginates_per 5
+ 
+  def self.search(search_key_word)
+    if search_key_word.present?
+       where(["title LIKE ?","%#{search_key_word}%"])
+    else
+      all
+    end
+  end
 end

@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 <% if current_user.admin? %>
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'View Boxes', plan_boxes_path(@plan) %>
+  <%= link_to 'Edit', edit_plan_path(@plan) %> |
+  <%= link_to 'View Boxes', plan_boxes_path(@plan) %> |
 <% end %>
-<%= link_to 'Back', plans_path %>
+
+<%= link_to 'Back', plans_path %>|
+<%= link_to 'Users', users_path %><br>
 
 Name: <%= @plan.name %> <br>
-Price: <%= @plan.price %> <br>
-Description<%= @plan.description%>
+Price: $<%= @plan.rounded_price %> <br>
+Description: <%= @plan.description %>
 
 <% if current_user.already_registered_for?(@plan) %>
   <%= button_to 'Unsubscribe', user_unsubscribe_path(current_user, plan_name: @plan.name), method: :delete, data: { confirm: 'Are you sure to Unsubscribe?' }%>

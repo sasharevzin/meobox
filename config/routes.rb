@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   # get "/sign_out" => "sessions#destroy", as: :sign_out
   delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
 
+  # named route
   get "/sign_up" => "users#new", as: :sign_up
-  post "/sign_up" => "users#create"
+ 
 
   get 'auth/:provider/callback', to: 'sessions#facebook'
   # match 'auth/:provider/callback', to: 'sessions#facebook', via: [:get, :post]

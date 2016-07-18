@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
+  # Cross Site Forgery request
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
@@ -15,15 +16,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  
-  def require_signin
-    unless current_user
-      session[:intended_url] = request.url
-      redirect_to new_user_path, alert: "Please sign in first!"
-    end
-  end
-
-  helper_method :require_signin
 
   def current_user?(user)
     current_user == user
@@ -43,12 +35,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def subscribed?
-  #   plan = Plan.find(params[:id])
-  #   !!current_user.plan.active
-  #   flash[:alert] = "You must be subscribed to access this content"
-  # end
+  
+  # store intended_url in the session
+  # assign value to session with url requested under the key intended_url
+  def require_signin
+    unless current_user
+      session[:intended_url] = request.url
+      redirect_to new_user_path, alert: "Please sign in first!"
+    end
+  end
 
-  helper_method :subscribed?
+  helper_method :require_signin
  
 end

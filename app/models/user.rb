@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_one :plan, through: :registration
   has_many :boxes, through: :plan
 
-  validates_presence_of :first_name, :email
+  validates_presence_of :first_name, :last_name, :email
 
   after_create :create_plan
   # when user created plan must be created

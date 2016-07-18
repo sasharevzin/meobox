@@ -20,6 +20,8 @@ gem 'pry'
 
 gem 'cancancan'
 
+gem 'kaminari'
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

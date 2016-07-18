@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_box, except: [:new, :index, :show, :destroy]  
-  before_action :set_plan, except: [:new, :index, :show] 
+  before_action :set_box, except: [:index, :destroy]  
+  before_action :set_plan, except: [:index, :show] 
   before_action :require_admin, except: [:index, :show]
   
   def index
-    @items = Item.all
+    @items = Item.search(params[:search]).page params[:page]
   end
 
   def create
     @item = @box.items.new(item_params)
     if @item.save
-      redirect_to items_path, notice: 'successfully created '
+      redirect_to items_path, notice: 'successfully created'
     else
       render 'new'
     end
@@ -40,15 +40,23 @@ class ItemsController < ApplicationController
   end
 
    def set_plan    
-    if params[:plan_id].present?    
-      @plan = Plan.find(params[:plan_id])    
+    # http://localhost:3000/plans/1/boxes/1/items
+    @plan = if params[:plan_id].present?    
+      Plan.find(params[:plan_id])  
+    # non-nested route http://localhost:3000/items/new
     elsif @box
-      @plan = @box.plan
+      @box.plan
     end
   end
 
   def set_box
-    @box = Box.find(params[:item][:box_id])
+    # http://localhost:3000/plans/1/boxes/1/items
+    @box = if params[:box_id].present?    
+      Box.find(params[:box_id]) 
+    # http://localhost:3000/items/new
+    elsif params[:item] && params[:item][:box_id]
+      Box.find(params[:item][:box_id])
+    end    
   end
 
   def item_params

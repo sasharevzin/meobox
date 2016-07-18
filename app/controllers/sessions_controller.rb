@@ -10,6 +10,8 @@ class SessionsController < ApplicationController
     # the password_digest stored in the database
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      # read the value of intended_url in the session hash
+      # if have intended_url will redirect otherwise redirect to user profile
       redirect_to(session[:intended_url] || @user)
       session[:intended_url] = nil 
     else
@@ -23,9 +25,10 @@ class SessionsController < ApplicationController
     redirect_to root_url, notice: "SIGNED IN"
   end
 
+  # delete user_id from session hash
   def destroy
     # @user = User.find(params[:id])
-    # @user.destroy
+    # remove user_id key from session
     session[:user_id] = nil
     session[:omniauth] = nil
     redirect_to root_url, alert: "Account successfully deleted!"
