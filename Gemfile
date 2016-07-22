@@ -22,6 +22,8 @@ gem 'cancancan'
 
 gem 'kaminari'
 
+gem "paperclip"
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

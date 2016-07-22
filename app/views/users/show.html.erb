@@ -5,6 +5,7 @@
       <section class="user_info">
           <h1 class="text-center"><%= @user.first_name %></h1>
           <h1 class="text-center"><%= @user.last_name %></h1>
+          <%= image_tag @user.avatar.url %>
           <h2 class="text-center"><%= @user.email %></h2>
           <% if @user.plan.present? %>
             <h3 class="text-center"><%= @user.plan.name %></h3>

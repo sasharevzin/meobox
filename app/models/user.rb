@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_one :plan, through: :registration
   has_many :boxes, through: :plan
 
+  has_attached_file :avatar, default_url: ':style/default.png', styles: { thumb: "100x100>" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   validates_presence_of :first_name, :last_name, :email
 
   after_create :create_plan
