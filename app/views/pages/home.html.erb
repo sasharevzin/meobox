@@ -4,14 +4,13 @@
 </div>
 <% if current_user %>
   <div class="row">
-   <%= form_tag items_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search" %>
-        <% end %>
+    <%= form_tag items_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search" %>
+    <% end %>
+<% end %>
     <div class="col-md-4">
       <div class="well">
-
-       
         <h2 class="text-center"><%= @plan_1.name %></h2>
         <h4>Sign up for $ <%= @plan_1.rounded_price %> a month</h4>
         <br/>
@@ -32,5 +31,4 @@
         <%= link_to "Sign up with Gold", plan_path(@plan_3), class: 'btn btn-success btn-lg btn-block' %>
       </div>
     </div>    
-  <% end %>
 </div>
