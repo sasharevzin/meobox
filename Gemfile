@@ -30,6 +30,7 @@ gem 'stripe'
 
 gem 'figaro'
 
+gem "active_model_serializers", git: "git://github.com/AskNative/active_model_serializers.git", branch: "0-8-stable"
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
