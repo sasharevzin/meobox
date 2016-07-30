@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   # match 'auth/:provider/callback', to: 'sessions#facebook', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]
 
+  resources :charges
 
 # API specific routes
 
