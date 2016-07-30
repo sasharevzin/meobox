@@ -43,4 +43,11 @@ Rails.application.routes.draw do
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]
 
 
+# API specific routes
+
+  namespace :api do
+    namespace :v1 do
+      resources :plans
+    end
+  end
 end
