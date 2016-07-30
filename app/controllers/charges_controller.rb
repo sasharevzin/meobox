@@ -18,9 +18,10 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-   
+    user = User.find_by(email: params[:stripeEmail])
+    user.update_attributes(stripe_token: params[:stripeToken])
 
-  redirect_to :back
+    redirect_to :back
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
