@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730180236) do
+ActiveRecord::Schema.define(version: 20160801222837) do
 
   create_table "boxes", force: :cascade do |t|
     t.string   "subscription"
@@ -30,10 +30,14 @@ ActiveRecord::Schema.define(version: 20160730180236) do
     t.string   "image"
     t.string   "size"
     t.string   "url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "price"
     t.integer  "box_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "plans", force: :cascade do |t|

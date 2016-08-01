@@ -13,7 +13,7 @@
     <% @items.each do |item| %>
       <div class="col-md-3">
         <div class="thumbnail">
-          <%= image_tag item.image %>
+          <%= image_tag item.image.url(:medium) %>
           <div class="caption">
             <h3><%= item.title %></h3>
             <p><%= item.description %></p>
