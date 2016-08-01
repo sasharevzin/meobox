@@ -1,3 +1,19 @@
+<script>
+  $(document).ready(function() {
+    $("#showJSON").click(function(e) {
+      e.preventDefault();
+      $.get("/api/v1/plans", function(data) {
+        var tableBody = $("body");
+        data.forEach(function(data) {
+          tableBody.append("<div> " + data.name + "</div>")
+        });
+      });
+    });
+  });
+</script>
+
+<a href= "" id="showJSON"> TEST </a>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Plans</h1>
@@ -10,7 +26,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="tableBody">
     <% @plans.each do |plan| %> 
       <tr>
         <td><%= plan.name %></td>
