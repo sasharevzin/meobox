@@ -10,8 +10,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = @box.items.new(item_params)
+    
     if @item.save
-      redirect_to items_path, notice: 'successfully created'
+      render json: @item, status: 201
+      # redirect_to items_path, notice: 'successfully created'
     else
       render 'new'
     end
