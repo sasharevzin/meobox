@@ -1,6 +1,6 @@
 var ready;
 ready = function() {
-  $('.show_details').click(function(){
+  $('#show_item_details').click(function(){
     event.preventDefault();
     var item_id = $(this).data('id');
       $.ajax({
