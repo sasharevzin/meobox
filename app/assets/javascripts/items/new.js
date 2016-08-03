@@ -8,8 +8,13 @@ $(function () {
     var item = $.post('/items', item_params);
 
     item.done(function(data) {
-      alert("item: " + data["id"] + "was successfully created!");
+      // alert("item: " + data["id"] + "was successfully created!");
       // TODO: handle response
+      console.log(data);
+      var item = data["item"];
+      $("#itemTitle").text(item["title"]);
+      $("#itemBody").text(item["description"]);
+      $("form").hide();
     });
   });
 });
