@@ -5,7 +5,7 @@ $(function () {
 
     var item_params = $(this).serialize();
 
-    var item = $.post('/items', item_params);
+    var item = $.post('/api/v1/items', item_params);
 
     item.done(function(data) {
       // alert("item: " + data["id"] + "was successfully created!");

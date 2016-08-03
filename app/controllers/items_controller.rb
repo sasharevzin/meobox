@@ -12,8 +12,7 @@ class ItemsController < ApplicationController
     @item = @box.items.new(item_params)
     
     if @item.save
-      render json: { item: @item }, status: 201 
-      # redirect_to items_path, notice: 'successfully created'
+      redirect_to items_path, notice: 'successfully created'
     else
       render 'new'
     end
