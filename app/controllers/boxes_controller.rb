@@ -45,6 +45,7 @@ class BoxesController < ApplicationController
   end
 
   def show
+   
   end
 
   def edit
