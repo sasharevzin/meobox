@@ -13,8 +13,13 @@ $(function () {
       console.log(data);
       var item = data["item"];
       $("#itemTitle").text(item["title"]);
-      $("#itemBody").text(item["description"]);
+      $("#itemDescription").text(item["description"]);
+      $("#itemPrice").text(item["price"]);
+      $("#itemImage").text(item["image"]);
+      $("#itemSize").text(item["size"]);
+      $("#itemUrl").text(item["url"]);
       $("form").hide();
     });
   });
 });
+
