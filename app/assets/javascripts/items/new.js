@@ -1,5 +1,5 @@
 $(function () {
-  $('form').submit(function(event) {
+  $('#items').submit(function(event) {
     //prevent form from submitting the default way
     event.preventDefault();
 
@@ -18,7 +18,7 @@ $(function () {
       $("#itemImage").text(item["image"]);
       $("#itemSize").text(item["size"]);
       $("#itemUrl").text(item["url"]);
-      $("form").hide();
+      $("#items").hide();
     });
   });
 });

@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   <!-- Adding html: { multipart: true } as a parameter to form_for will generate a form that knows it will be submitting both text and binary data to the server. -->
-    <%= form_for(@user), html: {multipart: true} do |f| %>
+    <%= form_for @user, html: {multipart: true} do |f| %>
       <%= render "shared/errors", object: @user %>
       <fieldset>
          <div class="form-group">

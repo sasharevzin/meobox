@@ -19,8 +19,12 @@
             <% end %>
             <%= link_to "Profile", user_path(current_user) %> <%= button_to "Log out", sign_out_path, method: :delete, class: 'btn btn-primary navbar-btn' %>
           <% else %>
-            <%= link_to "Log in", sign_in_path, class: 'btn btn-primary navbar-btn', method: :get %> | <%= link_to "Sign up", sign_up_path, class: 'btn btn-success navbar-btn', method: :get %>
-            <%= link_to "/auth/facebook" do %><%= image_tag('facebook.png', width: '40', heigth: '40', class: 'img-circle') %>
+           <!--  <%= link_to "Log in", sign_in_path, class: 'btn btn-primary navbar-btn', method: :get %> |  -->
+
+          <%= link_to 'Log In', '', class: "btn btn-link btn-primary navbar-btn", "data-toggle"=>"modal", "data-target"=>"#myModal" %>
+             <%= link_to "Sign up", sign_up_path, class: 'btn btn-success navbar-btn', method: :get %>
+
+          <%= link_to "/auth/facebook" do %><%= image_tag('facebook.png', width: '40', heigth: '40', class: 'img-circle') %>
             <% end %>
           <% end %>
           <li><%= link_to "About", about_path %></li>
@@ -28,3 +32,22 @@
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>
+
+  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
