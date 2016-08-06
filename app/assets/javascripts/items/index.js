@@ -8,7 +8,7 @@ ready = function() {
         dataType: 'json'
       }).done(function(data) {
         // data is the JSON response from the server
-        $('#myModal').modal('show');
+        $('#myItem').modal('show');
         // whatever to display data as a table
         $("#title").html(data['title']);
         $("#description").html(data['description']);
