@@ -1,7 +1,9 @@
 class Api::V1::ItemsController < ApplicationController   
+  
   def index
-    items = Item.all
-    render json: items, root: false 
+    items = Item.search(params[:search])
+    a = Api::V1::ItemSerializer.new(items)
+    render json: items, each_serializer: ItemSerializer
   end
 
   def show

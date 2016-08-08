@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
   paginates_per 5
  
   def self.search(search_key_word)
-    if search_key_word.present?
+    if search_key_word.present? && !search_key_word.nil?
        where(["title LIKE ?","%#{search_key_word}%"])
     else
       all
