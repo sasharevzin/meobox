@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
       render json: { user: user }, status: 201 
     else
       errors = user.errors.full_messages
-      render json: {errors: errors}, status:400
+      render json: {errors: errors}, status: 400
     end
   end
 

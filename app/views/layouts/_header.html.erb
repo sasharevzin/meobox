@@ -19,8 +19,6 @@
             <% end %>
             <%= link_to "Profile", user_path(current_user) %> <%= button_to "Log out", sign_out_path, method: :delete, class: 'btn btn-primary navbar-btn' %>
           <% else %>
-           <!--  <%= link_to "Log in", sign_in_path, class: 'btn btn-primary navbar-btn', method: :get %> |  -->
-
           <%= link_to 'Log In', '', class: "btn btn-link btn-primary navbar-btn", "data-toggle"=>"modal", "data-target"=>"#myModal" %>
              <%= link_to "Sign up", sign_up_path, class: 'btn btn-success navbar-btn', method: :get %>
 

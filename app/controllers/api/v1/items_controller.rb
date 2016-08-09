@@ -14,14 +14,14 @@ class Api::V1::ItemsController < ApplicationController
     )
   end
 
-   def create    
+  def create    
     item = Item.new(item_params)
     
     if item.save
       render json: { item: item }, status: 201 
-      # redirect_to items_path, notice: 'successfully created'
     else
-      render 'new'
+      errors = item.errors.full_messages
+      render json: {errors: errors}, status: 400
     end
    end
 
