@@ -7,16 +7,12 @@ ready = function() {
         url: '/api/v1/items/' + item_id,
         dataType: 'json'
       }).done(function(data) {
-        // data is the JSON response from the server
         $('#myItem').modal('show');
-        // whatever to display data as a table
         $("#title").html(data['title']);
         $("#description").html(data['description']);
         $("#price").html(data['price']);
         $("#size").html(data['size']);
         $("#url").html(data['url']);
-        // console.log('returned the following data');
-        // console.log(data);
       });
   });
 };

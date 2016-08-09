@@ -21,9 +21,9 @@
         my_html += '    <div class="caption">';
         my_html += '      <h3>' + data.title + '</h3>';
         my_html += '      <p>' + data.description + '</p>';
-        my_html += '      <p>number_to_currency(item.price)</p>';
-        my_html += '      <p>item.size lbs</p>';
-        my_html += '      <p>item.url</p>';
+        my_html += '      <p>' + number_to_currency(item.price)+ '</p>';
+        my_html += '      <p>' + item.size lbs + '</p>';
+        my_html += '      <p>' + item.url + '</p>';
         //    <= link_to 'Show', item_path(item), class: "btn btn-link", class: 'show_details', 'data-id' => item.id >
         my_html += '    </div>';
         my_html += '  </div>';
@@ -58,7 +58,7 @@
     $(document).on('turbolinks:load', ready);
   
   </script>
-
+  <br>
   <%= link_to 'New Item', new_item_path, class: "btn btn-link" %>
 
 <h1>Items Listings</h1>
