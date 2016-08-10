@@ -1,5 +1,4 @@
-var ready;
-ready = function() {
+$(document).ready(function() {
   $('#show_item_details').click(function(){
     event.preventDefault();
     var item_id = $(this).data('id');
@@ -16,11 +15,11 @@ ready = function() {
         $("#price").html(data['price']);
         $("#size").html(data['size']);
         $("#url").html(data['url']);
-        // console.log('returned the following data');
-        // console.log(data);
       });
   });
-};
+}
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+  
+
+
+
