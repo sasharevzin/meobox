@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       resources :plans
       resources :users, only: [:index, :create]
       resources :items
+      resources :boxes
     end
   end
 end
