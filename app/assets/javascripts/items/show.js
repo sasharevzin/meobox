@@ -8,16 +8,18 @@ $(document).ready(function() {
       }).done(function(data) {
         // data is the JSON response from the server
         // var response = JSON.parse(data);
-        $('#myModal').modal('show');
+
         // whatever to display data as a table
         $("#title").html(data['title']);
         $("#description").html(data['description']);
         $("#price").html(data['price']);
         $("#size").html(data['size']);
         $("#url").html(data['url']);
+
+        $('#myModal').modal('show');
       });
   });
-}
+});
 
   
 

@@ -5,7 +5,7 @@
     <%= submit_tag "Search" %>
   <% end %>
 
-<%= form_tag('/', remote: true, id: 'ajax-search') do %>
+<%= form_tag('/', id: 'ajax-search') do %>
   <input type="text" name="ajax_search" id="ajax_search">
   <%= submit_tag "Ajax Search" %>
 <% end %>

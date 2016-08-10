@@ -33,6 +33,24 @@ $(function () {
       this.url = item['url'];
     }
 
+    Item.prototype.itemDisplay = function(){
+      var my_html = "" 
+      my_html += '<div class="col-md-3">';
+      my_html += '  <div class="thumbnail">';
+      my_html += '    <img src=""></img>';
+      my_html += '    <div class="caption">';
+      my_html += '      <h3>'+ this.title + '</h3>';
+      my_html += '      <p>' + this.description + '</p>';
+      my_html += '      <p>' + this.formatted_price + '</p>';
+      my_html += '      <p>' + this.size + 'lbs</p>';
+      my_html += '      <p>' + this.url + '</p>';
+      my_html += '    </div>';
+      my_html += '  </div>';
+      my_html += '</div>';
+
+      return my_html;
+    }
+
     Item.prototype.modifiedTitle = function(){
       return ("my new modified title: " + this.title);
     }
