@@ -22,7 +22,7 @@ $(document).ready(function(){
       my_html += '  <div class="thumbnail">';
       my_html += '    <img src=""></img>';
       my_html += '    <div class="caption">';
-      my_html += '      <h3>' + data.title + '</h3>';
+      my_html += '      <h3>'+ data.title + '</h3>';
       my_html += '      <p>' + data.description + '</p>';
       my_html += '      <p>' + data.formatted_price + '</p>';
       my_html += '      <p>' + data.size + 'lbs</p>';
@@ -34,7 +34,7 @@ $(document).ready(function(){
       return my_html;
     }
 
-    $('#search_button').click(function(){
+    $('#ajax-search').submit(function(){
       event.preventDefault();
       var search = $('#ajax_search').val();
     $.ajax({

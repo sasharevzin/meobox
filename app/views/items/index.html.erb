@@ -5,9 +5,10 @@
     <%= submit_tag "Search" %>
   <% end %>
 
-
-  <input type="text" name="ajax_search" id="ajax_search"></input> <button id="search_button">Ajax Search</button>
-
+<%= form_tag('/', remote: true, id: 'ajax-search') do %>
+  <input type="text" name="ajax_search" id="ajax_search">
+  <%= submit_tag "Ajax Search" %>
+<% end %>
   <br>
   <%= link_to 'New Item', new_item_path, class: "btn btn-link" %>
 

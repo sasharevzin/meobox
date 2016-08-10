@@ -1,5 +1,6 @@
 $(function () {
   $('form#new_item').submit(function(event) {
+    // Hijack form default behavior
     event.preventDefault();
     var item_params = $(this).serialize();
     var item = $.post('/api/v1/items', item_params);
