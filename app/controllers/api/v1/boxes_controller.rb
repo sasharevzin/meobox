@@ -29,6 +29,6 @@ class Api::V1::BoxesController < ApplicationController
   private
 
   def box_params
-    params.require(:box).permit(:subscription, :title, :theme_title, :shipped)
+    params.require(:box).permit(:starts_at, :theme_title, :plan_id)
   end
 end

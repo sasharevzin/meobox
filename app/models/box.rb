@@ -20,6 +20,10 @@ class Box < ActiveRecord::Base
     end
   end
 
+  def plan_name
+    plan.name
+  end
+
   def shipped?
     shipped == true
   end

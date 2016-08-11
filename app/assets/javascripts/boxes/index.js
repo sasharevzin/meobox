@@ -19,7 +19,7 @@ $(document).ready(function() {
 });
 
 function Box(box){
-  this.subscription = box['subscription'];  
+  this.plan_name = box['plan_name'];  
   this.title = box['title'];
   this.theme_title = box['theme_title'];
   this.shipped = box['shipped'];
@@ -38,17 +38,17 @@ Box.prototype.itemsDisplay = function(box) {
   return data_to_html;
 }
 
+
 Box.prototype.boxDisplay = function(){
   var my_html = "" 
   my_html += '<div class="col-md-3">';
   my_html += '  <div class="thumbnail">';
   my_html += '    <img src=""></img>';
   my_html += '    <div class="caption">';
-  my_html += '      <h3>'+ this.subscription + '</h3>';
-  my_html += '      <p>' + this.title + '</p>';
-  my_html += '      <p>' + this.theme_title+ '</p>';
-  my_html += '      <p>' + this.shipped + 'lbs</p>';
-  my_html += '      <h3> Items </h3>';
+  my_html += '      <h3>'+ 'Subscription: ' + this.plan_name + '</h3>';
+  my_html += '      <p>' + 'Theme Title: ' +  this.theme_title+ '</p>';
+  my_html += '      <p>' + 'Shipped: ' +  this.shipped + '</p>';
+  my_html += '      <h3> Items for </h3>' + this.theme_title;
   my_html +=        this.itemsDisplay(this);
   my_html += '    </div>';
   my_html += '  </div>';
