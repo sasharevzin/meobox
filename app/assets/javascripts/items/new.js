@@ -22,12 +22,8 @@ $(document).ready(function(){
       $("#itemModifiedTitle").text(modifiedTitle);
       $("form#new_item").hide();
     });
-  });
-
-    
+  });    
 });
-
-
 
 function Item(item){
   this.title = item['title'];  
@@ -39,7 +35,6 @@ function Item(item){
 }
 
 //Item Prototypes
-
 Item.prototype.itemDisplay = function(){
   var my_html = "" 
   my_html += '<div class="col-md-3">';
