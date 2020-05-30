@@ -20,7 +20,7 @@ gem 'pry'
 
 gem 'cancancan'
 
-gem 'kaminari'
+gem 'kaminari', '>= 1.2.1'
 
 gem "paperclip"
 
